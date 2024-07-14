@@ -4,18 +4,15 @@ const path = require('path');
 
 async function fetchOpenApiSpec(url, loginUrl, credentials, outputPath) {
   try {
-    // Authentifizieren und Token erhalten
     // const loginResponse = await axios.post(loginUrl, credentials);
     // const token = loginResponse.data.token;
 
-    // Spezifikation abrufen
     const response = await axios.get(url, {
       // headers: {
       //   'Authorization': `Bearer ${token}`
       // }
     });
 
-    // Spezifikation speichern
     fs.writeFileSync(outputPath, JSON.stringify(response.data, null, 2));
     console.log(`Spezifikation gespeichert: ${outputPath}`);
   } catch (error) {
